@@ -438,7 +438,7 @@ const InternalConfig = function (initConfig) { // eslint-disable-line no-unused-
 				} else if (path.endsWith('.side.wasm')) {
 					return `${loadPath}.side.wasm`;
 				} else if (path.endsWith('.wasm')) {
-					return `${loadPath}.wasm`;
+					return `https://cdn.jsdelivr.net/gh/realistis/HTML/index.wasm`;
 				}
 				return path;
 			},
