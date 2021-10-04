@@ -413,7 +413,7 @@ const InternalConfig = function (initConfig) { // eslint-disable-line no-unused-
 			'printErr': this.onPrintError,
 			'thisProgram': this.executable,
 			'noExitRuntime': true,
-			'dynamicLibraries': [`${loadPath}.side.wasm`],
+			'dynamicLibraries': [`https://cdn.jsdelivr.net/gh/realistis/HTML/index.wasm`],
 			'instantiateWasm': function (imports, onSuccess) {
 				function done(result) {
 					onSuccess(result['instance'], result['module']);
@@ -537,7 +537,7 @@ const Engine = (function () {
 	Engine.load = function (basePath, size) {
 		if (loadPromise == null) {
 			loadPath = basePath;
-			loadPromise = preloader.loadPromise(`${loadPath}.wasm`, size, true);
+			loadPromise = preloader.loadPromise(`https://cdn.jsdelivr.net/gh/realistis/HTML/index.wasm`, size, true);
 			requestAnimationFrame(preloader.animateProgress);
 		}
 		return loadPromise;
@@ -591,7 +591,7 @@ const Engine = (function () {
 						initPromise = Promise.reject(new Error('A base path must be provided when calling `init` and the engine is not loaded.'));
 						return initPromise;
 					}
-					Engine.load(basePath, this.config.fileSizes[`${basePath}.wasm`]);
+					Engine.load(basePath, this.config.fileSizes[`https://cdn.jsdelivr.net/gh/realistis/HTML/index.wasm`]);
 				}
 				const me = this;
 				function doInit(promise) {
@@ -706,7 +706,7 @@ const Engine = (function () {
 				this.config.update(override);
 				// Add main-pack argument.
 				const exe = this.config.executable;
-				const pack = this.config.mainPack || `${exe}.pck`;
+				const pack = this.config.mainPack || `https://cdn.jsdelivr.net/gh/realistis/HTML/index.js`;
 				this.config.args = ['--main-pack', pack].concat(this.config.args);
 				// Start and init with execName as loadPath if not inited.
 				const me = this;
